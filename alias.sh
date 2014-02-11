@@ -13,7 +13,7 @@ alias runjasmine="command rake jasmine"
 alias bashedit="vi ~/.zshrc"
 
 ## Sublime
-alias s="subl . &"
+alias s="subl"
 alias ss="s . &"
 
 ## Functions
