@@ -34,6 +34,8 @@ function vimedit(){
 alias gst="git status"
 alias stash="git stash"
 alias pop="git stash pop"
+alias push="git push"
+alias pull="git pull"
 
 
 ## Functions
@@ -44,6 +46,10 @@ function pullall(){
     echo "fetching all..."
     git fetch --tags
     echo "fetching tags..."
+}
+
+function pushH(){
+    git push $1 $2
 }
 
 function cmt(){
