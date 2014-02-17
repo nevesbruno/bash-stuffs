@@ -7,10 +7,12 @@
 ## Aliases
 alias ws="cd ~/workspace"
 alias c="clear"
+alias cl="clear && l"
 alias runserver="command python -m SimpleHTTPServer"
 alias html5="command git clone https://github.com/h5bp/html5-boilerplate.git"
 alias runjasmine="command rake jasmine"
 alias bashedit="vi ~/.zshrc"
+alias a="vim ~/lab/bash-stuffs/alias.sh"
 
 ## Sublime
 alias s="subl"
@@ -27,7 +29,7 @@ function vimedit(){
 }
 
 #
-#Git stuffs
+#Git stuff
 #
 
 ## Aliases
@@ -37,8 +39,11 @@ alias pop="git stash pop"
 alias push="git push"
 alias pull="git pull"
 
-
 ## Functions
+function clone(){
+	git clone $1
+}
+
 function pullall(){
     git pull
     echo "pulling from repositore..."
