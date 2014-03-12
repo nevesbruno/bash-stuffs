@@ -38,6 +38,8 @@ alias stash="git stash"
 alias pop="git stash pop"
 alias push="git push"
 alias pull="git pull"
+alias glog="git log --graph --all --pretty=format:'%C(yellow)%h %ad %Cblue%an%C(auto)%d %Creset%s' --date=short --decorate"
+alias catlssh="ssh -p 2222 catla790@catlandrescue.com.br"
 
 ## Functions
 function clone(){
