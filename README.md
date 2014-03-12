@@ -9,4 +9,4 @@ Let's enjoy it. Not judge it, because i dont give a freaking shit...
 
 While it's in --alpha version and to this work fine have some steps:
  * Clone repository in `~/lab/`
- * Copy theme file to oh-my-zsh themes directory `mv tuntz.zash-theme ~/.oh-my-zsh/themes/tuntz.zash-theme`
+ * Copy theme file to oh-my-zsh themes directory `mv tuntz.zsh-theme ~/.oh-my-zsh/themes/tuntz.zsh-theme`
