@@ -1,24 +1,31 @@
-#Some of this alias and bash functions are made by Weslley Araujo[ wparaujo.r7@gmail.com ]
+
+
+  ########################################
+  ##									##
+  ##  Bruno Neves <bruno.tntex@gmail>	##
+  ## 									##
+  ########################################
+
 
 #
-#Some helpful shits
+# Some helpful stuff
 #
 
 ## Aliases
 alias ws="cd ~/workspace"
 alias c="clear"
-alias cl="clear && l"
+alias cl="clear && ls -lha"
 alias runserver="command python -m SimpleHTTPServer"
 alias html5="command git clone https://github.com/h5bp/html5-boilerplate.git"
-alias runjasmine="command rake jasmine"
 alias bashedit="vi ~/.zshrc"
 alias a="vim ~/lab/bash-stuffs/alias.sh"
 
 ## Sublime
-alias s="subl"
-alias ss="s . &"
+function s(){
+    subl $1 &
+}
 
-## Functions
+## Utils
 function mkcd(){
     mkdir $1
     cd $1
@@ -29,24 +36,25 @@ function vimedit(){
 }
 
 #
-#Git stuff
+# Git stuff
 #
 
-## Aliases
+### Aliases
 alias gst="git status"
 alias stash="git stash"
 alias pop="git stash pop"
-alias push="git push"
-alias pull="git pull"
 alias glog="git log --graph --all --pretty=format:'%C(yellow)%h %ad %Cblue%an%C(auto)%d %Creset%s' --date=short --decorate"
 
-## Functions
+### Functions
+
+# Clone repository
 function clone(){
 	git clone $1
 }
 
+# Pull and full update on a branch
 function pullall(){
-    git pull
+    git pull $1 $2
     echo "pulling from repositore..."
     git fetch --all
     echo "fetching all..."
@@ -54,11 +62,19 @@ function pullall(){
     echo "fetching tags..."
 }
 
-function pushH(){
+# Push to a branch
+function push(){
     git push $1 $2
 }
 
+# Pull from a branch
+function pull(){
+	git pull $1 $2
+}
+
+# Add all non commited files and set a commit message
 function cmt(){
     git add .
+    echo "All files added"
     git commit -m $1
 }
