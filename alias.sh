@@ -1,9 +1,9 @@
 
 
   ########################################
-  ##									##
+  ##                                    ##
   ##  Bruno Neves <bruno.tntex@gmail>	##
-  ## 									##
+  ##                                    ##
   ########################################
 
 
@@ -49,7 +49,7 @@ alias glog="git log --graph --all --pretty=format:'%C(yellow)%h %ad %Cblue%an%C(
 
 # Clone repository
 function clone(){
-	git clone $1
+    git clone $1
 }
 
 # Pull and full update on a branch
@@ -69,7 +69,7 @@ function push(){
 
 # Pull from a branch
 function pull(){
-	git pull $1 $2
+    git pull $1 $2
 }
 
 # Add all non commited files and set a commit message
