@@ -76,5 +76,5 @@ function pull(){
 function cmt(){
     git add .
     echo "All files added"
-    git commit -m $1
+    git commit -m "$1"
 }
