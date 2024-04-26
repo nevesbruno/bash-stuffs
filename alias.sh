@@ -103,3 +103,32 @@ function cmt(){
     echo "All files added"
     git commit -m "$1"
 }
+
+
+# Docker helpers
+alias dps="docker ps"
+alias dpsa="docker ps -a"
+alias drma="docker rm -f $(docker ps -qa)"
+function dbash(){
+    docker exec -it $1 bash
+}
+
+function drm(){
+    if [ "$1" = "-i" ]; then
+        docker rmi $2
+    else
+        docker rm $1
+    fi
+}
+
+function dexec(){
+    docker exec -it $1 $2
+}
+
+# Work Stuff
+alias proj="cd ~/projetos"
+alias ib="proj && cd portal"
+alias inst="proj && cd master-institucional"
+alias mas="inst"
+alias nrd="npm run dev"
+alias play="code . && nrd"
