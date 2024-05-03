@@ -132,3 +132,8 @@ alias inst="proj && cd master-institucional"
 alias mas="inst"
 alias nrd="npm run dev"
 alias play="code . && nrd"
+
+#Python
+function venv(){
+    source venv/bin/activate
+}
