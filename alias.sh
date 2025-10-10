@@ -108,7 +108,7 @@ function cmt(){
 # Docker helpers
 alias dps="docker ps"
 alias dpsa="docker ps -a"
-alias drma="docker rm -f $(docker ps -qa)"
+# alias drma="docker rm -f $(docker ps -qa)"
 function dbash(){
     docker exec -it $1 bash
 }
@@ -133,7 +133,47 @@ alias mas="inst"
 alias nrd="npm run dev"
 alias play="code . && nrd"
 
+function audsat(){
+    echo -e "\e[1;34mIniciando XAMPP...\e[0m"
+    xamp start && echo -e "\e[1;32mXAMPP iniciado com sucesso.\e[0m"
+    
+    echo -e "\e[1;34mAbrindo o diretório do projeto no Cursor...\e[0m"
+    cursor /opt/lampp/htdocs/audsat-export && echo -e "\e[1;32mDiretório do projeto aberto no Cursor.\e[0m"
+    
+    echo -e "\e[1;34mNavegando para o diretório do tema...\e[0m"
+    cd /opt/lampp/htdocs/audsat-export/wp-content/themes/audsat && echo -e "\e[1;32mAgora no diretório do tema Audsat.\e[0m"
+    
+    echo -e "\e[1;34mIniciando o observador Sass...\e[0m"
+    npm run sass:watch
+    echo -e "\e[1;33mObservador Sass iniciado. Pressione Ctrl+C para parar.\e[0m"
+}
+
 #Python
 function venv(){
     source venv/bin/activate
+}
+
+#XAMP
+functino xamp(){
+    sudo /opt/lampp/lampp $1
+
+}
+
+alias freela="cd /opt/lampp/htdocs"
+
+# SimpleBase
+alias sb-app="cd ~/projects/simplebase/app && cursor . && npm start"
+alias sb-api="cd ~/projects/simplebase/api && cursor . && venv && uvicorn main:app --reload"
+
+# Misc
+alias htdocs="cd /opt/lampp/htdocs/"
+
+
+# Montar pendrive no ubuntu WSL2 D:
+function mount-pendrive(){
+    # Criar o ponto de montagem
+    sudo mkdir -p /mnt/d
+
+    # Montar manualmente o drive D:
+    sudo mount -t drvfs D: /mnt/d
 }
