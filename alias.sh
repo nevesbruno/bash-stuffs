@@ -104,6 +104,49 @@ function cmt(){
     git commit -m "$1"
 }
 
+function clone-key() {
+	echo "ssh-agent bash -c 'ssh-add $1; $2'"
+	ssh-agent bash -c 'ssh-add $1; $2'
+}
+
+
+# Exemplo de uso:
+# clone-lnv git@github.com:usuario/repo.git 
+# clone-lnv git@github.com:usuario/repo.git meu-diretorio
+
+clone-lnv(){
+    local repo_url="$1"
+    local ssh_key="/home/brunoneves/.ssh/lnv-2"
+    local dest_dir="$2"
+
+    if [ -z "$repo_url" ] || [ -z "$ssh_key" ]; then
+        echo "Uso: clone_with_key <repo_url> <caminho_chave_ssh> [diretorio_destino]"
+        return 1
+    fi
+
+    if [ ! -f "$ssh_key" ]; then
+        echo "Erro: Chave SSH não encontrada: $ssh_key"
+        return 1
+    fi
+
+    # Se o diretório de destino não for informado, usa o nome do repo como git faz por padrão
+    if [ -z "$dest_dir" ]; then
+        dest_dir=$(basename "$repo_url" .git)
+    fi
+
+    GIT_SSH_COMMAND="ssh -i $ssh_key -o IdentitiesOnly=yes" git clone "$repo_url" "$dest_dir"
+
+    # Configura a chave SSH no git config local do projeto
+    if [ -d "$dest_dir" ]; then
+        cd "$dest_dir"
+        git config core.sshCommand "ssh -i $(realpath "$ssh_key") -o IdentitiesOnly=yes"
+        cd - > /dev/null
+        echo "✓ Repositório clonado e configurado com a chave: $ssh_key"
+    else
+        echo "Erro: Diretório do repositório não encontrado"
+        return 1
+    fi
+}
 
 # Docker helpers
 alias dps="docker ps"
